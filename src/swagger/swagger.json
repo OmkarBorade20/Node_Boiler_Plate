@@ -1,0 +1,218 @@
+{
+    "openapi": "3.0.3",
+    "info": {
+      "title": "Swagger Docs - Node Template 1.0",
+      "description": "This is a Node Boiler Plate Code 1.0,Fell Free to use this in your Projects.",
+      "contact": {
+        "email": "oborade7@gmail.com"
+      },
+      "license": {
+        "name": "Omkar Borade",
+        "email": "oborade7@gmail.com"
+      },
+      "version": "1.0.0"
+    },
+
+    "servers": [
+      {
+        "url": "http://localhost:3000"
+      }
+    ],
+    "tags": [
+    
+      {
+        "name": "hello",
+        "description": "Hello route."
+      },
+      {
+        "name": "Mongo Curd",
+        "description": "Mongo Db Curd Operations."
+      }
+    ],
+    "paths": {
+      "/hello": {
+        "get": {
+          "tags": [
+            "hello"
+          ],
+          "summary": "Get Data From Logs Collection.",
+
+          "responses": {
+            "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/res"
+                  }
+                }
+              
+              }
+          }
+         
+        }
+      
+      },
+      "/findByQuery": {
+        "post": {
+          "tags": [
+            "Mongo Curd"
+          ],
+          "summary": "Get Data From Db based on Collection and filter passed.",
+
+          "requestBody": {
+            "description": "Pass Collection and query for filtering through db.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/findbyquery"
+                }
+              }
+              
+            },
+            "required": true
+          },
+           
+          "responses": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/res"
+                  }
+                }
+              
+              }
+            }
+           
+          } 
+        },
+    
+      "/InsertMany": {
+        "post": {
+          "tags": [
+            "Mongo Curd"
+          ],
+          "summary": "Inserts Many Records into Collection.",
+          "requestBody": {
+            "description": "Pass Collection and Array of Records for filtering through db.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/insertmany"
+                }
+              }
+              
+            },
+            "required": true
+          },
+          "responses": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/res"
+                  }
+                }
+              
+              }
+            }
+           
+          }
+         
+        },
+      
+    
+      "/InsertOne": {
+        "post": {
+          "tags": [
+            "Mongo Curd"
+          ],
+          "summary": "Insert One Record into Collection.",
+          "requestBody": {
+            "description": "Pass Collection and one object Record for filtering through db.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/insertone"
+                }
+              }
+              
+            },
+            "required": true
+          },
+          "responses": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/res"
+                  }
+                }
+              
+              }
+            }
+           
+          }
+         
+        }
+      
+    },
+    "components": {
+        "schemas":{
+            "findbyquery": {
+                "type": "object",
+                "properties": {
+                  "collection": {
+                    "type": "string",
+                    "example": "Logs"
+                  },
+                  "query": {
+                    "type": "object",
+                    "example": {}
+                  }
+                },
+                "xml": {
+                  "name": "findbyquery"
+                }
+              },
+              "insertmany": {
+                "type": "object",
+                "properties": {
+                  "collection": {
+                    "type": "string",
+                    "example": "Logs"
+                  },
+                  "data": {
+                    "type": "array",
+                    "example": [{"name":"omkar","salary":"33000"}]
+                  }
+                },
+                "xml": {
+                  "name": "insertmany"
+                }
+              },
+              "insertone": {
+                "type": "object",
+                "properties": {
+                  "collection": {
+                    "type": "string",
+                    "example": "Logs"
+                  },
+                  "data": {
+                    "type": "object",
+                    "example": {"name":"isha"}
+                  }
+                },
+                "xml": {
+                  "name": "insertone"
+                }
+              },
+              "res":{
+                "message": "Data Fetched!!",
+                "data": []
+              },
+            "req":{
+                "collection": "string",
+                "filter": {}
+            }
+        }
+   
+    }
+}
+  

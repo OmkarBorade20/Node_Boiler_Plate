@@ -1,0 +1,21 @@
+{
+  "name": "node-architecture",
+  "version": "1.0.0",
+  "description": "Node Boiler Plate 1.0 created by omkar Borade",
+  "main": "app.js",
+  "scripts": {
+    "dev": "nodemon app.js",
+    "start": "node app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.1",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "mongodb": "^5.0.1",
+    "nodemon": "^2.0.20",
+    "swagger-ui-express": "^4.6.0"
+  }
+}
