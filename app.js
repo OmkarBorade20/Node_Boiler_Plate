@@ -18,12 +18,12 @@ mongo.connect((err,db)=>{
  app.use(cors())
  app.use(bodyParser.urlencoded({ extended: false }))
  app.use(bodyParser.json())
-
+ swaggerDocument.servers[0].url= process.env.swaggerurl || swaggerDocument.servers[0].url;
  app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
  app.use(router)
 
 
-const PORT=3000;
+const PORT=process.env.port ||3000;
 
 app.listen(PORT,()=>{
     console.log(`Listening to Port :${PORT}`)
