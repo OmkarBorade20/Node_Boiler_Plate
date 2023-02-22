@@ -17,7 +17,9 @@ mongo.connect((err,db)=>{
 
  app.use(cors())
  app.use(bodyParser.urlencoded({ extended: false }))
- app.use(bodyParser.json())
+
+
+ app.use(bodyParser.json({limit: '50mb'}))
  swaggerDocument.servers[0].url= process.env.swaggerurl || swaggerDocument.servers[0].url;
  app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
  app.use(router)
