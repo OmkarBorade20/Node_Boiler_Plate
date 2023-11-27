@@ -1,7 +1,7 @@
 {
     "openapi": "3.0.3",
     "info": {
-      "title": "Swagger Docs - Node Template 1.0",
+      "title": "Swagger Docs - Node Template 2.0",
       "description": "This is a Node Boiler Plate Code 1.0,Fell Free to use this in your Projects.",
       "contact": {
         "email": "oborade7@gmail.com"
@@ -10,7 +10,7 @@
         "name": "Omkar Borade",
         "email": "oborade7@gmail.com"
       },
-      "version": "1.0.0"
+      "version": "2.0.0"
     },
 
     "servers": [
@@ -19,7 +19,10 @@
       }
     ],
     "tags": [
-    
+      {
+        "name": "FTP Operations",
+        "description": "File Transfer Operations."
+      },
       {
         "name": "hello",
         "description": "Hello route."
@@ -30,13 +33,124 @@
       }
     ],
     "paths": {
-      "/hello": {
-        "get": {
+      "/ftpLists": {
+        "post": {
           "tags": [
-            "hello"
+            "FTP Operations"
           ],
-          "summary": "Get Data From Logs Collection.",
+          "summary": "This api Establishes Connection with FTP Servert and lists down the files present in FtpServer.",
 
+          "requestBody": {
+            "description": "Pass FTP HOST username and password..",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ftpbody"
+                }
+              }
+              
+            },
+            "required": true
+          },
+          "responses": {
+            "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/res"
+                  }
+                }
+              
+              }
+          }
+         
+        }
+      
+      },
+      "/fptConnection": {
+        "post": {
+          "tags": [
+            "FTP Operations"
+          ],
+          "summary": "Api to chek if connection is establised.",
+
+          "requestBody": {
+            "description": "Pass FTP HOST username and password..",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ftpbody"
+                }
+              }
+              
+            },
+            "required": true
+          },
+          "responses": {
+            "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/res"
+                  }
+                }
+              
+              }
+          }
+         
+        }
+      
+      },
+      "/downloadFile": {
+        "post": {
+          "tags": [
+            "FTP Operations"
+          ],
+          "summary": "Api to Download File from Directory.",
+
+          "requestBody": {
+            "description": "Pass FTP HOST username and password..",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ftpDownloadbody"
+                }
+              }
+              
+            },
+            "required": true
+          },
+          "responses": {
+            "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/res"
+                  }
+                }
+              
+              }
+          }
+         
+        }
+      
+      },
+      "/uploadFile": {
+        "post": {
+          "tags": [
+            "FTP Operations"
+          ],
+          "summary": "Api to upload speciied file to ftp server.",
+
+          "requestBody": {
+            "description": "Pass FTP HOST username and password..",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ftpDownloadbody"
+                }
+              }
+              
+            },
+            "required": true
+          },
           "responses": {
             "content": {
                 "application/json": {
@@ -84,6 +198,27 @@
            
           } 
         },
+      "/dirLists": {
+          "get": {
+            "tags": [
+              "FTP Operations"
+            ],
+            "summary": "Node Server Local Directory Files.",
+  
+            "responses": {
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/res"
+                    }
+                  }
+                
+                }
+              }
+             
+            } 
+          },
+      
     
       "/InsertMany": {
         "post": {
@@ -165,6 +300,50 @@
                   "query": {
                     "type": "object",
                     "example": {}
+                  }
+                },
+                "xml": {
+                  "name": "findbyquery"
+                }
+              },
+              "ftpbody": {
+                "type": "object",
+                "properties": {
+                  "host": {
+                    "type": "string",
+                    "example": "Logs"
+                  },
+                  "user": {
+                    "type": "string",
+                    "example":""
+                  },
+                  "password": {
+                    "type": "string",
+                    "example": ""
+                  }
+                },
+                "xml": {
+                  "name": "findbyquery"
+                }
+              },
+              "ftpDownloadbody": {
+                "type": "object",
+                "properties": {
+                  "host": {
+                    "type": "string",
+                    "example": "host"
+                  },
+                  "user": {
+                    "type": "string",
+                    "example":"user"
+                  },
+                  "password": {
+                    "type": "string",
+                    "example": "user"
+                  },
+                  "filename": {
+                    "type": "string",
+                    "example": "filename"
                   }
                 },
                 "xml": {

@@ -2,7 +2,7 @@ const { MongoClient } = require('mongodb');
 
 
 // Connection URL
-const url = process.env.dburl || 'mongodb://127.0.0.1:27017';
+const url = process.env.dburl || 'mongodb+srv://TaskManager:taks2011@cluster0.dxoxr.mongodb.net/test?authSource=admin&replicaSet=atlas-82j5fk-shard-0&readPreference=primary&ssl=true';
 const client = new MongoClient(url);
 
 // Database Name
