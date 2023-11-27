@@ -20,6 +20,16 @@ module.exports.fptConnection=async function (req,res,next)
     }
 }
 
+module.exports.downloadFileFromFtp=async function (req,res,next)
+{
+    try{
+        await service.downloadFileFromFtp(req)
+        next()
+    }catch(e){
+        next(e)
+    }
+}
+
 module.exports.downloadFile=async function (req,res,next)
 {
     try{
@@ -29,6 +39,7 @@ module.exports.downloadFile=async function (req,res,next)
         next(e)
     }
 }
+
 
 module.exports.uploadFile=async function (req,res,next)
 {
@@ -49,6 +60,17 @@ module.exports.ftpLists=async function (req,res,next)
         next(e)
     }
 }
+
+module.exports.backUpDataFromFtp=async function (req,res,next)
+{
+    try{
+        await service.backUpDataFromFtp(req)
+        next()
+    }catch(e){
+        next(e)
+    }
+}
+
 
 module.exports.findByQuery=async function (req,res,next)
 {

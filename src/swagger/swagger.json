@@ -24,11 +24,49 @@
         "description": "File Transfer Operations."
       },
       {
+        "name": "Node Server File Operations",
+        "description": "Node Server File Transfer Operations."
+      },
+      {
         "name": "Mongo Curd",
         "description": "Mongo Db Curd Operations."
       }
     ],
     "paths": {
+
+      "/backUpDataFromFtp": {
+        "post": {
+          "tags": [
+            "FTP Operations"
+          ],
+          "summary": "This api Establishes Connection with FTP Servert and Downloads all Files from FTP to Node Local Server.",
+
+          "requestBody": {
+            "description": "Pass FTP HOST username and password..",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ftpbody"
+                }
+              }
+              
+            },
+            "required": true
+          },
+          "responses": {
+            "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/res"
+                  }
+                }
+              
+              }
+          }
+         
+        }
+      
+      },
       "/ftpLists": {
         "post": {
           "tags": [
@@ -95,7 +133,7 @@
         }
       
       },
-      "/downloadFile": {
+      "/downloadFileFromFtp": {
         "post": {
           "tags": [
             "FTP Operations"
@@ -108,6 +146,39 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ftpDownloadbody"
+                }
+              }
+              
+            },
+            "required": true
+          },
+          "responses": {
+            "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/res"
+                  }
+                }
+              
+              }
+          }
+         
+        }
+      
+      },
+      "/downloadFile": {
+        "post": {
+          "tags": [
+            "Node Server File Operations"
+          ],
+          "summary": "Api to Download Files that are fetched in Node Server Directory.",
+
+          "requestBody": {
+            "description": "Pass FTP HOST username and password..",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ftpDownload"
                 }
               }
               
@@ -164,9 +235,9 @@
       "/dirLists": {
           "get": {
             "tags": [
-              "FTP Operations"
+              "Node Server File Operations"
             ],
-            "summary": "Node Server Local Directory Files.",
+            "summary": "Fetch all Node Server Local Directory Files.",
   
             "responses": {
                 "content": {
@@ -274,15 +345,19 @@
                 "properties": {
                   "host": {
                     "type": "string",
-                    "example": "Logs"
+                    "example": "ftp.nishthafoundationpune.org"
                   },
                   "user": {
                     "type": "string",
-                    "example":""
+                    "example":"u869533745.hoststinger_ftp"
                   },
                   "password": {
                     "type": "string",
                     "example": ""
+                  },
+                  "subDir": {
+                    "type": "string",
+                    "example": "Drive"
                   }
                 },
                 "xml": {
@@ -294,20 +369,37 @@
                 "properties": {
                   "host": {
                     "type": "string",
-                    "example": "host"
+                    "example": "ftp.nishthafoundationpune.org"
                   },
                   "user": {
                     "type": "string",
-                    "example":"user"
+                    "example":"u869533745.hoststinger_ftp"
                   },
                   "password": {
                     "type": "string",
-                    "example": "user"
+                    "example": ""
                   },
                   "filename": {
                     "type": "string",
-                    "example": "filename"
+                    "example": "omkarResume.pdf"
+                  },
+                  "subDir": {
+                    "type": "string",
+                    "example": "Drive"
                   }
+                },
+                "xml": {
+                  "name": "findbyquery"
+                }
+              },
+              "ftpDownload": {
+                "type": "object",
+                "properties": {
+                  "path": {
+                    "type": "string",
+                    "example": "/abcdfile.pdf"
+                  }
+                
                 },
                 "xml": {
                   "name": "findbyquery"
