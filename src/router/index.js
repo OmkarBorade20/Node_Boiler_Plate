@@ -8,7 +8,7 @@ const controller=require('../controller/contorller')
 router.post('/fptConnection',controller.fptConnection)
 router.post('/ftpLists',controller.ftpLists)
 router.post('/downloadFile',controller.downloadFile)
-router.post('/uploadFile',controller.uploadFile)
+// router.post('/uploadFile',controller.uploadFile)
 
 //all local Destination apis
 router.get('/dirLists',controller.dirLists)

@@ -24,10 +24,6 @@
         "description": "File Transfer Operations."
       },
       {
-        "name": "hello",
-        "description": "Hello route."
-      },
-      {
         "name": "Mongo Curd",
         "description": "Mongo Db Curd Operations."
       }
@@ -105,39 +101,6 @@
             "FTP Operations"
           ],
           "summary": "Api to Download File from Directory.",
-
-          "requestBody": {
-            "description": "Pass FTP HOST username and password..",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ftpDownloadbody"
-                }
-              }
-              
-            },
-            "required": true
-          },
-          "responses": {
-            "content": {
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/res"
-                  }
-                }
-              
-              }
-          }
-         
-        }
-      
-      },
-      "/uploadFile": {
-        "post": {
-          "tags": [
-            "FTP Operations"
-          ],
-          "summary": "Api to upload speciied file to ftp server.",
 
           "requestBody": {
             "description": "Pass FTP HOST username and password..",
