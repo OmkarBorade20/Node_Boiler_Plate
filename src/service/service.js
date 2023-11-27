@@ -113,7 +113,10 @@ module.exports.downloadFileFromFtp=async function (req)
 
 module.exports.downloadFile=async function (req)
 {
+    console.log("current Dir :",__dirname)
     let destination_path=path.join(__dirname,'..',"..","/Destination")
+    console.log("destination_path Dir :",destination_path)
+    
 
     let Filepath=req.body.path;
     let finalPath;
