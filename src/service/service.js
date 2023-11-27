@@ -6,6 +6,10 @@ const fs=require('fs')
 module.exports.dirLists=async function (req)
 {
     let des_path=path.join(__dirname,'..',"..","/Destination")
+
+    if (!fs.existsSync(des_path)){
+        fs.mkdirSync(des_path);
+    }
     let list=fs.readdirSync(des_path, {withFileTypes: true});
     // .filter(item => !item.isDirectory())
     // .map(item => item.name)
